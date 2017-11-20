@@ -13,7 +13,7 @@ var cssProd = ExtractTextPlugin.extract({
 var cssConfig = isProd ? cssProd : cssDev; 
 
 module.exports = {
-	entry: './src/app.js',
+	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, './dist'),
     	filename: 'bundle.js'
@@ -32,28 +32,31 @@ module.exports = {
       			use: 'babel-loader'
       		},
 
-		 	{
-				test: /\.(gif|png|jpe?g|svg)$/i,
-				use: [
-						{
-			            	loader: 'file-loader',
-			            	options: {
-			            	name: '[name].[ext]',
-			            	outputPath: 'assets/images/',
-			            	//publicPath: 'assets/images/'
+		 	// {
+				// test: /\.(gif|png|jpe?g|svg)$/i,
+				// use: [
+				// 		{
+			 //            	loader: 'file-loader',
+			 //            	options: {
+			 //            	name: '[name].[ext]',
+			 //            	outputPath: 'assets/images/',
+			 //            	//publicPath: 'assets/images/'
 
-			            			}  
-		          		}, 
-		          		{
-		          			loader: 'image-webpack-loader'	
-		          		}
-				  	]
-			},
+			 //            			}  
+		  //         		}, 
+		          		// {
+		          		// 	loader: 'image-webpack-loader'	
+		          		// }
+				  	
+			// },
 
+			 { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=200000' },
+			
 			{
-		     	test: /\.(png|jpg|)$/,
-		      	loader: 'url-loader?limit=200000'
-		    }
+				test   : /vendor\/.+\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+			    loader : 'file-loader',
+			    exclude: /node_modules/
+			}
 	    ]
 	  },
 
