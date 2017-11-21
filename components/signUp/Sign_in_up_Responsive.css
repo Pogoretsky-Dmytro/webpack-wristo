@@ -8,20 +8,23 @@
 
 @font-face{
    font-family: DINPro-Regular;
-   src: url(./assets/fonts/DINPro-Regular_13937.ttf);
+   src: url(../../src/assets/fonts/DINPro-Regular_13937.ttf);
 }
 @font-face{   
     font-family: DINPro-Medium;
-    src: url(./assets/fonts/DINPro-Medium_13936.ttf);
+    src: url(../../src/assets/fonts/DINPro-Medium_13936.ttf);
 }
 
 html, body {
   height: 100%;
 }
 
+body{
+    background-color: #f5f5f5;
+}
 .sign_Page{
     width:100%;
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
 /*    background-color: aquamarine;*/
     min-height: 100%;
 }

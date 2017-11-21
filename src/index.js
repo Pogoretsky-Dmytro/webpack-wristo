@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import css from '../components/login/Sign_in_up_Responsive.css'
+import Axios from 'axios';
+import css from '../components/signUp/Sign_in_up_Responsive.css'
 import Login from '../components/login/login.js';
 import SignUp from '../components/signUp/signUp.js';
 
 
 ReactDOM.render(
-	<Login />,
+	<SignUp />,
 	document.getElementById('root')
 );
