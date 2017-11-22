@@ -1,6 +1,7 @@
 import React from 'react';
 import logoImg from '../../src/assets/images/logoW.png';
 import SignUpForm from './signUpForm.js';
+import classNames from 'classnames';
 
 class SignUp extends React.Component{ 
     render(){
