@@ -1,11 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import routes from './routes.js';
-import Axios from 'axios';
-import classNames from 'classnames';
-import css from './components/Sign_in_up_Responsive.css';
-import App from './app.js';
+import ReactDOM from 'react-dom';
 import Home from './components/home/home.js';
 import NotFound from './components/notfound/notFound.js';
 import Login from './components/login/login.js';
@@ -24,16 +19,33 @@ import {
   Link
 } from 'react-router-dom';
 
+class App extends React.Component{
+		
+    render(){
+        return (
+		    <div>
+		    	{this.props.children}
+		    </div>
+        );
+    }
+};
 
-ReactDOM.render(
-	<Router>
-		<div>
-			<Route exact path='/' component={Home}/>
-		 	<Route path='/signup' component={SignUp}/>
-		    <Route path='/login' component={Login}/> 
-		</div>
-	</Router>,
-	document.getElementById('root')
-);
+App.propTypes = {
+	children: PropTypes.object.isRequired
+};
 
-// <Router history={browserHistory} routes={routes}/>,
+export default App;
+
+
+
+
+
+
+
+
+// <Switch>
+// 		      <Route exact path='/' component={Home}/>
+// 		      <Route exact path='/signup' component={SignUp}/>
+// 		      <Route exact path='/login' component={Login}/>
+// 		      <Route path='*' component={NotFound}/>
+// 		    </Switch>

@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import routes from './routes.js';
-import Axios from 'axios';
-import classNames from 'classnames';
-import css from './components/Sign_in_up_Responsive.css';
 import App from './app.js';
 import Home from './components/home/home.js';
 import NotFound from './components/notfound/notFound.js';
@@ -18,22 +14,38 @@ import SignUp from './components/signup/signUp.js';
 // import { Route, IndexRoute } from 'react-router-dom';
 // import { browserHistory } from 'react-router-dom';
 //import { Route, IndexRoute } from 'react-router';
+
+// class Routes extends React.Component{
+		
+//     render(){
+//         return (
+// 		    <Route path='/' component={App}>
+// 			 	<IndexRoute component={Home} />
+// 			 	<Route exact path='/signup' component={SignUp}/>
+// 			    <Route exact path='/login' component={Login}/> 
+// 		 	</Route>
+//         );
+//     }
+// };
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
 
+//export default Routes;
 
-ReactDOM.render(
-	<Router>
-		<div>
-			<Route exact path='/' component={Home}/>
+
+
+export default (
+		 <Route path='/' component={App}>
+		 	
 		 	<Route path='/signup' component={SignUp}/>
 		    <Route path='/login' component={Login}/> 
-		</div>
-	</Router>,
-	document.getElementById('root')
-);
+		 </Route>
+	);
 
-// <Router history={browserHistory} routes={routes}/>,
+// <Route path='*' component={NotFound}/>
+
+// <IndexRoute component={Home} />
+// <IndexRoute component={Home} />
