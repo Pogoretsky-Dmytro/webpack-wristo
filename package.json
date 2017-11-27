@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "prod": "NODE_ENV=production webpack -p",
-    "heroku-prebuild": "npm install --only=dev",
+    "heroku-prebuild": "npm install --only=dev --dev",
     "postinstall": "webpack -p",
     "start": "node server.js"
   },
