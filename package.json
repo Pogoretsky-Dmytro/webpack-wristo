@@ -10,7 +10,6 @@
     "dev": "webpack-dev-server",
     "prod": "NODE_ENV=production webpack -p",
     "postinstall": "webpack -p",
-    "heroku-prebuild": "npm install --only=dev",
     "start": "node server.js"
   },
   "author": "",
