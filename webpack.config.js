@@ -23,7 +23,8 @@ module.exports = {
 	    rules: [
 	      	{
 	        	test: /\.css$/,
-	        	use: cssConfig
+	        	//use: cssConfig
+	        	use: ['style-loader', 'css-loader']
       		},
 
       		{
@@ -81,7 +82,7 @@ module.exports = {
 
 			new ExtractTextPlugin({
 				filename: "styles.css",
-				disable: !isProd
+				//disable: !isProd
 			}),
 			new webpack.NamedModulesPlugin(),
      		new webpack.HotModuleReplacementPlugin()
