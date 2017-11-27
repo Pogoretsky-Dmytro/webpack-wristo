@@ -7,6 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "heroku-prebuild": "npm install --only=dev",
     "postinstall": "NODE_ENV=production webpack -p",
     "start": "node server.js"
   },
