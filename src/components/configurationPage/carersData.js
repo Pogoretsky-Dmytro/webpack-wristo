@@ -11,16 +11,17 @@ import {
   Link
 } from 'react-router-dom';
 
-class WristoConfiguration extends React.Component{ 
+class CarersData extends React.Component{ 
     
     constructor(props) {
     super(props);
     // this.CreateWearersList = this.CreateWearersList.bind(this);
     // this.HandleSearch = this.HandleSearch.bind(this);
     this.state = {
-      wristoData : [{'name': 'Wristo1', 'simNumber': '+380698632654', 'uniqueWristoId': '4rt567hyt67888huyt900', 'status': 'active'}, 
-                   ],
-      search: ""
+      CarersData : [
+      {'fullName': 'Full name', 'simNumber': '+380698632654', 'email': 'email@gmail.com', 'permition': 'master account'},
+      {'fullName': 'Full name', 'simNumber': '+380698632125', 'email': 'email@gmail.com', 'permition': 'view only'} 
+                   ]
     };
   };
 
@@ -46,18 +47,18 @@ const tableActions = <div>
 
 
 
-      const wristoDataTable = this.state.wristoData.map((dataElement) => {
+      const CarersDataTable = this.state.CarersData.map((dataElement) => {
        // console.log((dataElement.uniqueWristoId.concat(Math.random())).toString());
 
       
 
           return (
 
-            <tr key={dataElement.uniqueWristoId.toString()}>
-              <td>{dataElement.name}</td>
+            <tr key={dataElement.simNumber.toString()}>
+              <td>{dataElement.fullName}</td>
               <td>{dataElement.simNumber}</td>
-              <td>{dataElement.uniqueWristoId}</td>
-              <td>{dataElement.status}</td>
+              <td>{dataElement.email}</td>
+              <td>{dataElement.permition}</td>
               <td>
                 {tableActions}   
               </td>
@@ -72,28 +73,28 @@ const tableActions = <div>
         return (
         <div className="wearerProfileWrap">
   			  <div className="wearerProfile__header">
-            <p>Wristo configuration</p>
-              <button className="addWristoDetails">
-                    <svg className="addWristoDetails__icon" fill="#B52F54" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <p>Carers data</p>
+              <button className="add-new-carer">
+                    <svg className="add-new-carer__icon" fill="#B52F54" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
                       <path d="M0 0h24v24H0z" fill="none"/>
                     </svg>
-                    <span className="addWristoDetails__name">Add Wristo Details</span>
+                    <span className="add-new-carer__name">Add New Carer</span>
                 </button>
           </div>
           
-          <table className="wristo-configuration-table">
+          <table className="carers-data-table">
               <thead>
                 <tr>
-                  <th>NAME</th>
+                  <th>FULL NAME</th>
                   <th>SIM NUMBER</th>
-                  <th>UNIQUE WRISTO ID</th>
-                  <th>STATUS</th>
+                  <th>EMAIL</th>
+                  <th>PERMITION</th>
                   <th>ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
-                  {wristoDataTable} 
+                  {CarersDataTable} 
               </tbody>
           </table>
 
@@ -104,7 +105,7 @@ const tableActions = <div>
 
 
 
-export default WristoConfiguration;
+export default CarersData;
 
 
 

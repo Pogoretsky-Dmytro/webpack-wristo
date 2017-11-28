@@ -4,6 +4,8 @@ import Header from './header.js'
 import SettingsNavbar from './navbar.js'
 import WearerProfile from './wearerProfile.js';
 import WristoConfiguration from './wristoConfiguration.js';
+import CarersData from './carersData.js'
+import ManageProfileButtons from './manageProfileButtons.js';
 import {
   BrowserRouter as Router,
   Route,
@@ -18,6 +20,8 @@ class WearerConfiguration extends React.Component{
           <p className="wearerConfigWrap__description">Manage information about wristo</p>
           <WearerProfile/>
           <WristoConfiguration/>
+          <CarersData/>
+          <ManageProfileButtons/>
 		    </div>
         );
     }

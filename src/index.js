@@ -20,8 +20,10 @@ import SettingsNavbar from './components/configurationPage/navbar.js';
 import SettingsPage from './components/configurationPage/settingsPage.js';
 import settingsPage_css from './components/configurationPage/settingsPage.css';
 import WristoConfiguration from './components/configurationPage/wristoConfiguration.js';
-import wristoConfiguration_css from './components/configurationPage/wristoConfiguration.css';
 import css from './components/Sign_in_up_Responsive.css';
+import wristoConfiguration_css from './components/configurationPage/wristoConfiguration.css';
+import CarersData_css from './components/configurationPage/carersData.css';
+import ManageProfileButtons_css from './components/configurationPage/manageProfileButtons.css';
 // import {
 //   BrowserRouter as Router,
 //    Redirect,
