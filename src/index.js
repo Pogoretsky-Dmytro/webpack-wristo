@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import routes from './routes.js';
 import Axios from 'axios';
 import classNames from 'classnames';
-import css from './components/Sign_in_up_Responsive.css';
+
 import App from './app.js';
 import Home from './components/home/home.js';
 import NotFound from './components/notfound/notFound.js';
@@ -19,6 +19,7 @@ import navbar_css from './components/configurationPage/navbar.css';
 import SettingsNavbar from './components/configurationPage/navbar.js';
 import SettingsPage from './components/configurationPage/settingsPage.js';
 import settingsPage_css from './components/configurationPage/settingsPage.css';
+import css from './components/Sign_in_up_Responsive.css';
 // import {
 //   BrowserRouter as Router,
 //    Redirect,
