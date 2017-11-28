@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Header from './header.js';
 import SettingsNavbar from './navbar.js';
 import WearerConfiguration from './WearerConfiguration.js';
+import WristoConfiguration from './wristoConfiguration.js';
 import {
   BrowserRouter as Router,
   Route,

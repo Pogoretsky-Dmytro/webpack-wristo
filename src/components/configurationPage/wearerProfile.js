@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Header from './header.js'
 import SettingsNavbar from './navbar.js'
-import profileLogo from '../../assets/images/OldWoman3.png';
+import profileLogo from '../../assets/images/Joan.png';
 import {
   BrowserRouter as Router,
   Route,
@@ -15,7 +15,7 @@ class WearerProfile extends React.Component{
         <div className="wearerProfileWrap">
   			  <div className="wearerProfile__header">
             <p>Wearer profile</p>
-            <button>
+            <button className="editWearerButton">
             </button>
           </div>
           <div className="wearerProfile__info">
@@ -25,30 +25,30 @@ class WearerProfile extends React.Component{
                 <tbody>
                   <tr>
                     <td>Full name</td>
-                    <td>Joan&nbsp;</td>
+                    <td>Joan</td>
                   </tr>
                   <tr>
                     <td>Gender</td>
                     <td>Female</td>
                   </tr>
                   <tr>
-                    <td>Age&nbsp;</td>
-                    <td>78&nbsp;</td>
+                    <td>Age</td>
+                    <td>78</td>
                   </tr>
                   <tr>
-                    <td>Weight&nbsp;</td>
-                    <td>72&nbsp;</td>
+                    <td>Weight</td>
+                    <td>72</td>
                   </tr>
                   <tr>
                     <td>
-                      <p>Resting &amp; Max</p>
-                      <p>heart rate&nbsp;</p>
+                      <p>Resting Max</p>
+                      <p>heart rate</p>
                     </td>
-                    <td>120 - 150&nbsp;</td>
+                    <td>120 - 150</td>
                   </tr>
                   <tr>
-                    <td>Group&nbsp;</td>
-                    <td>&nbsp; &nbsp; &nbsp; -&nbsp;</td>
+                    <td>Group</td>
+                    <td>   -</td>
                   </tr>
                 </tbody>
               </table>

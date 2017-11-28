@@ -4,7 +4,7 @@
 }
 
 .wearerConfigWrap__name {
-	padding: 15px 0 4px;
+	padding: 13px 0 4px;
 	font-family: DINPro-Regular;
 	font-size: 20px;
 	color: #565656;
@@ -12,7 +12,7 @@
 
 .wearerConfigWrap__description {
 	font-family: DINPro-Regular;
-	font-size: 16px;
+	font-size: 14px;
 	color: #b3b3b3;
 	padding-bottom: 25px;
 }

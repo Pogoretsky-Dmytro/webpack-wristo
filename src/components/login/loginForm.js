@@ -91,7 +91,7 @@ class LogInForm extends React.Component {
 
 
     return (
-        <form>
+        <form className="signInForm">
         <p>Email</p>
         <input className={emailStyle} classnames="email" name="email" type="text" placeholder="user@mail.com" onChange={this.saveInput} />
         

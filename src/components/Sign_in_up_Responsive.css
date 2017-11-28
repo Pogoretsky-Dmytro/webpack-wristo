@@ -82,12 +82,11 @@ header{
 /*    margin-bottom: 260px;*/
 /*    height: 100%;*/
 }
-p{
+.signUpForm p, .signInForm p{
     font-family: DINPro-Medium;
     font-size: 14px;
     text-align: left;
-    color: #000000;
-    
+    color: #000000; 
 }
 
 #heading{
@@ -100,6 +99,7 @@ p{
 
 .inputField {
     border: 1px solid #b52f54;
+    color: black;
 }
 
 .submit, .showPass {
@@ -153,9 +153,11 @@ p a{
   color: black;
 }
 
-.inputField::placeholder {
+input::placeholder {
     color: black;
 }
+
+
 #forgotPass{
     text-align: right;
     margin-top: 8px;
@@ -186,7 +188,14 @@ p a{
     margin-top: 24px;
 }
 
-[value]{
+ .submit [value]{
+    display: inline-block;
+    text-align: center;
+    padding: 11px 0;
+    color:white;
+    font-family: DINPro-Medium;    
+}
+ .signUpForm [value]{
     display: inline-block;
     text-align: center;
     padding: 11px 0;
@@ -194,7 +203,13 @@ p a{
     font-family: DINPro-Medium;    
 }
 
-
+.signInForm [value]{
+    display: inline-block;
+    text-align: center;
+    padding: 11px 0;
+    color: white;
+    font-family: DINPro-Medium;    
+}
 
 .sign{
 /*    padding-bottom: 328px;*/

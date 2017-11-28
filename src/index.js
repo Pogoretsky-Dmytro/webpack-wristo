@@ -19,6 +19,8 @@ import navbar_css from './components/configurationPage/navbar.css';
 import SettingsNavbar from './components/configurationPage/navbar.js';
 import SettingsPage from './components/configurationPage/settingsPage.js';
 import settingsPage_css from './components/configurationPage/settingsPage.css';
+import WristoConfiguration from './components/configurationPage/wristoConfiguration.js';
+import wristoConfiguration_css from './components/configurationPage/wristoConfiguration.css';
 import css from './components/Sign_in_up_Responsive.css';
 // import {
 //   BrowserRouter as Router,
@@ -38,7 +40,7 @@ import {
 ReactDOM.render(
 	<Router>
 		<div>
-			<Route exact path='/' component={Home}/>
+			<Route exact path='/' component={SettingsPage}/>
 		 	<Route path='/signup' component={SignUp}/>
 		    <Route path='/login' component={Login}/> 
 		</div>
