@@ -37,9 +37,10 @@ import {
 ReactDOM.render(
 	<Router>
 		<div>
-			<Route exact path='/' component={SettingsPage}/>
+			<Route exact path='/' component={Home}/>
 		 	<Route path='/signup' component={SignUp}/>
 		    <Route path='/login' component={Login}/> 
+		    <Route path='*' component={NotFound}/>
 		</div>
 	</Router>,
 	document.getElementById('root')
