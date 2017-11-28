@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Header from './header.js'
 import SettingsNavbar from './navbar.js'
-import profileLogo from '../../assets/images/OldMan1.png';
+import profileLogo from '../../assets/images/OldWoman3.png';
 import {
   BrowserRouter as Router,
   Route,

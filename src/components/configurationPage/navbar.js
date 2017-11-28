@@ -18,7 +18,8 @@ constructor(props) {
       wearersData : [{'logo': "1", 'name': 'Joan'}, 
                      {'logo': "2", 'name': 'Kate'},
                      {'logo': "3", 'name': 'Mark'},
-                     {'logo': "4", 'name': 'Angelina'}],
+                     {'logo': "4", 'name': 'Angelina'},
+                     {'logo': "4", 'name': 'Bruse'}],
       search: ""
     };
   };

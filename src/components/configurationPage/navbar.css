@@ -1,4 +1,4 @@
- @font-face{
+@font-face{
    font-family: DINPro-Regular;
    src: url(../../assets/fonts/DINPro-Regular_13937.ttf);
 }
@@ -9,10 +9,13 @@
 
 
  .wearers{
- 	width: 300px;
-    margin-bottom: 28px;
+ 	width: 450px;
+    /*margin-bottom: 0;*/
     box-shadow: 2px 2px 4px #EAEAEA, -2px 2px 4px #EAEAEA;
     background-color: #FFFFFF;
+    max-height: 336px;
+    overflow-x: none;
+    overflow-y: auto;
 }
 
 

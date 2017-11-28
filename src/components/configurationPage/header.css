@@ -115,7 +115,9 @@ html, body{
     width: 35px;
     height: 35px;
     border-radius: 35px;
-    background-image: url(../../assets/images/OldMan1.png);
+    background-image: url(../../assets/images/OldWoman3.png);
     background-size: contain;
+    background-position: top;
+    background-size: 130%;
     margin-right: 21px;
 }
