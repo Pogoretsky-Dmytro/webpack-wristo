@@ -10,9 +10,15 @@ import Home from './components/home/home.js';
 import NotFound from './components/notfound/notFound.js';
 import Login from './components/login/login.js';
 import SignUp from './components/signup/signUp.js';
-import ConfigurationPage from './components/configurationPage/configurationPage.js';
+import WearerConfiguration from './components/configurationPage/WearerConfiguration.js';
+import WearerConfiguration_css from './components/configurationPage/WearerConfiguration.css';
+import WearerProfile from './components/configurationPage/wearerProfile.js';
+import WearerProfile_css from './components/configurationPage/wearerProfile.css';
 import header_css from './components/configurationPage/header.css';
+import navbar_css from './components/configurationPage/navbar.css';
 import SettingsNavbar from './components/configurationPage/navbar.js';
+import SettingsPage from './components/configurationPage/settingsPage.js';
+import settingsPage_css from './components/configurationPage/settingsPage.css';
 // import {
 //   BrowserRouter as Router,
 //    Redirect,
@@ -31,7 +37,7 @@ import {
 ReactDOM.render(
 	<Router>
 		<div>
-			<Route exact path='/' component={SettingsNavbar}/>
+			<Route exact path='/' component={SettingsPage}/>
 		 	<Route path='/signup' component={SignUp}/>
 		    <Route path='/login' component={Login}/> 
 		</div>

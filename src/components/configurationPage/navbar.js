@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-
+import wearerLogo from '../../assets/icons/default_avatar.png';
 import {
   BrowserRouter as Router,
   Route,
@@ -12,66 +12,62 @@ class SettingsNavbar extends React.Component{
 
 constructor(props) {
     super(props);
-
-    this.wearerList = this.wearerList.bind(this);
-
+    // this.CreateWearersList = this.CreateWearersList.bind(this);
+    this.HandleSearch = this.HandleSearch.bind(this);
     this.state = {
-        wearersData : ['Joan', 'Kate', 'Mark', 'Angelina']
-    }
+      wearersData : [{'logo': "1", 'name': 'Joan'}, 
+                     {'logo': "2", 'name': 'Kate'},
+                     {'logo': "3", 'name': 'Mark'},
+                     {'logo': "4", 'name': 'Angelina'}],
+      search: ""
+    };
   };
 
 
-  // let wearersList = [{'avatar': '1', 'name': 'Joan'}, 
-  //                    {'avatar': '2', 'name': 'Kate'}, 
-  //                    {'avatar': '3', 'name': 'Mark'}, 
-  //                    {'avatar': '4', 'name': 'Angelina'}];
+  HandleSearch(event) {
+      this.setState({search: event.target.value.substr(0,20)})
+  };
+      
 
-  // var wearersData = ['Joan', 'Kate', 'Mark', 'Angelina'];
 
-  wearerList() {
-    let w = this.state.wearersData;
-    console
-    const wearers = w.map((wearer) =>
-          <li key={wearer.toString()}> {wearer} </li>);
-        
+
+ render(){
+
+        let filteredWearers = this.state.wearersData.filter(
+              (wearer) => {
+                return wearer.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+              }
+          );
+
+        const namesList = filteredWearers.map((wearer) => {
+
+          return (
+            <li className="wearers__user" key={wearer.name.toString()}>
+                <div className="wearers__user__logo"> {wearer.logo} </div> 
+                <div className="wearers__user__name"> {wearer.name} </div>
+            </li>
+          )
+        });
+
+
+
+
+
+
         return (
-        <ul>
-          {wearers}
-        </ul>
-      );
- }
-
-
-
-//   wearerList(props) {
-//   const wearers = props.wearers;
-//   const listWearers = wearers.map((wearer) =>
-//     // Correct! Key should be specified inside the array.
-//     <WearersList key={wearer.toString()}
-//               value={wearer} />
-
-//   );
-//   return (
-//     <ul>
-//       {listWearers}
-//     </ul>
-//   );
-// }
-
-// const numbers = [1, 2, 3, 4, 5];
-
-//   <NumberList numbers={numbers} />,
-//   document.getElementById('root');
-
-// const wearers = [1, 2, 3, 4, 5];
-
-
-
-    render(){
-        return (
-            <div>
-                <h1> it is working !!! </h1>
-                <wearerList/>
+            <div className="wearers">
+                <div className="tile__header"> Wearers List </div>
+                <div className="searchWrap">
+                    <input className="searchWearers" placeholder="Search" type="text" value={this.state.search} onChange={this.HandleSearch} />
+                </div>
+                <ul>{namesList}</ul>
+                <button class="addWearerButton">
+                    <svg class="addWearerButton__icon" fill="#B52F54" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                      <path d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                    <span class="addWearerButton__name">Add Wearer</span>
+                </button>
             </div>
         );
     }
