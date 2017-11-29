@@ -10,20 +10,19 @@ import Home from './components/home/home.js';
 import NotFound from './components/notfound/notFound.js';
 import Login from './components/login/login.js';
 import SignUp from './components/signup/signUp.js';
-import WearerConfiguration from './components/configurationPage/WearerConfiguration.js';
-import WearerConfiguration_css from './components/configurationPage/WearerConfiguration.css';
-import WearerProfile from './components/configurationPage/wearerProfile.js';
-import WearerProfile_css from './components/configurationPage/wearerProfile.css';
-import header_css from './components/configurationPage/header.css';
-import navbar_css from './components/configurationPage/navbar.css';
-import SettingsNavbar from './components/configurationPage/navbar.js';
-import SettingsPage from './components/configurationPage/settingsPage.js';
-import settingsPage_css from './components/configurationPage/settingsPage.css';
-import WristoConfiguration from './components/configurationPage/wristoConfiguration.js';
+import WearerConfiguration from './components/wearers-configuration-page/wearer-configuration-page/wearerConfiguration.js';
+import WearerConfiguration_css from './components/wearers-configuration-page/wearer-configuration-page/wearerConfiguration.css';
+import WearerProfile from './components/wearers-configuration-page/wearer-profile/wearerProfile.js';
+import WearerProfile_css from './components/wearers-configuration-page/wearer-profile/wearerProfile.css';
+import header_css from './components/header/header.css';
+import navbar_css from './components/wearers-configuration-page/wearer-navbar/navbar.css';
+import SettingsNavbar from './components/wearers-configuration-page/wearer-navbar/navbar.js';
+import SettingsPage from './components/wearers-configuration-page/wearerSettingsPage.js';
+import settingsPage_css from './components/wearers-configuration-page/wearerSettingsPage.css';
+import WristoConfiguration from './components/wearers-configuration-page/wristo-group-configuration/wristoGroupConfiguration.js';
 import css from './components/Sign_in_up_Responsive.css';
-import wristoConfiguration_css from './components/configurationPage/wristoConfiguration.css';
-import CarersData_css from './components/configurationPage/carersData.css';
-import ManageProfileButtons_css from './components/configurationPage/manageProfileButtons.css';
+import wristoConfiguration_css from './components/wearers-configuration-page/wristo-group-configuration/wristoGroupConfiguration.css';
+import CarersData_css from './components/wearers-configuration-page/carers-data/carersData.css';
 // import {
 //   BrowserRouter as Router,
 //    Redirect,

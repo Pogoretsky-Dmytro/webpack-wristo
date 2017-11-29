@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import Header from './header.js'
-import SettingsNavbar from './navbar.js'
-import profileLogo from '../../assets/images/Joan.png';
+import profileLogo from '../../../assets/images/Joan.png';
 import {
   BrowserRouter as Router,
   Route,
@@ -10,6 +8,18 @@ import {
 } from 'react-router-dom';
 
 class WearerProfile extends React.Component{ 
+
+
+
+  constructor(props) {
+    super(props);
+
+    // this.state = {
+    //   wearerData : [{'id': '0','full_name': 'Joan', 'gender': 'Female', 'age': '78', 'weight': '72', 'heart_rate': '120-150', 'image': 'string', 'master_id': '0'}, 
+    //                ]
+    // };
+  };
+  
     render(){
         return (
         <div className="wearerProfileWrap">
@@ -19,36 +29,36 @@ class WearerProfile extends React.Component{
             </button>
           </div>
           <div className="wearerProfile__info">
-            <img src={profileLogo} alt=""/>
+            <img src={`${this.props.wearer.image}`} alt='' />
             <div className="wearerProfile__info__table">
               <table>
                 <tbody>
                   <tr>
                     <td>Full name</td>
-                    <td>Joan</td>
+                    <td>{this.props.wearer.full_name}</td>
                   </tr>
                   <tr>
                     <td>Gender</td>
-                    <td>Female</td>
+                    <td>{this.props.wearer.gender}</td>
                   </tr>
                   <tr>
                     <td>Age</td>
-                    <td>78</td>
+                    <td>{this.props.wearer.age}</td>
                   </tr>
                   <tr>
                     <td>Weight</td>
-                    <td>72</td>
+                    <td>{this.props.wearer.weight}</td>
                   </tr>
                   <tr>
                     <td>
                       <p>Resting Max</p>
                       <p>heart rate</p>
                     </td>
-                    <td>120 - 150</td>
+                    <td>{this.props.wearer.heart_rate}</td>
                   </tr>
                   <tr>
                     <td>Group</td>
-                    <td>   -</td>
+                    <td>{this.props.wearer.master_id}</td>
                   </tr>
                 </tbody>
               </table>

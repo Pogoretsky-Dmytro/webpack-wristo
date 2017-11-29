@@ -1,9 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import Header from './header.js'
-import SettingsNavbar from './navbar.js'
-import profileLogo from '../../assets/images/Joan.png';
-import NavbarButton from './navbarButton.js';
+
 import {
   BrowserRouter as Router,
   Route,

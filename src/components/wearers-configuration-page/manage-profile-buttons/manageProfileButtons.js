@@ -1,7 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import wearerLogo from '../../assets/icons/default_avatar.png';
-import NavbarButton from './navbarButton.js'
 import {
   BrowserRouter as Router,
   Route,
