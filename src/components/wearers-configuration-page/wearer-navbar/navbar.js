@@ -53,13 +53,46 @@ constructor(props) {
   //   this.setState({wearerId: event.target.id})
   // };
 
+// onClick={ (e) => {
+//     gaClickEvent('home-where-to-buy', 'submit' , undefined);
+//     this.submit(e);
+//   }} >
+// But this is slightly more code that I'd be comfortable putting in an onClick handler. If I were you, I'd separate this logic out into a handler method on the component. Eg:
+
+
+
+
+
+//   handleClick () {
+//     gaClickEvent('home-where-to-buy', 'submit' , undefined);
+//     this.submit();
+//   },
+//   render () {
+//     return <button 
+//       className={s.button}
+//       onClick={(e) => this.handleClick(e)} >
+//       I am a button!
+//       </button>;
+//   }
+
+
+
+// HandleBackground () {
+//     gaClickEvent('home-where-to-buy', 'submit' , undefined);
+//     this.submit();
+//   },
+
+
+// (event)=>{ console.log(event.target); return(event.target.style={liStyle}) }
+
+// if (wearer.id === this.state.wearerId) event.target.style.backgroundColor='grey';
 
  render(){
 
         // let wearerElementStyle = classNames({
-        //       'selectedWearer': (this.props.wearerId === wearer.id) 
+        //       'selWearer': (this.state.wearerId === wearer.id) 
         //     }); 
-        
+
         
 
         let filteredWearers = this.props.wearersData.filter(
@@ -70,17 +103,20 @@ constructor(props) {
 
         const namesList = filteredWearers.map((wearer) => {
 
+           let wearerElementStyle = classNames({
+              'wearers__user': true,
+              'selWearer': (this.state.wearerId === wearer.id) 
+            }); 
 
           return (
-            <li className="wearers__user" key={wearer.id.toString()} onClick={() => this.props.handleWearerData(wearer.id)} >
+            <li className={wearerElementStyle} key={wearer.id.toString()} onClick={(event) => {this.props.handleWearerData(wearer.id); this.state.wearerId=wearer.id; console.log(event.target)  }} >
                 <div className="wearers__user__logo"> <img src={`${wearer.image}`} alt='' /> </div> 
                 <div className="wearers__user__name"> {wearer.full_name} </div>
             </li>
           )
         });
 
-
-
+        
 
 
 
