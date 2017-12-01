@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import WearerError from '../wearer-error.js';
+import WearersLoading from '../wearer-loading.js';
 import {
   BrowserRouter as Router,
   Route,
@@ -18,6 +20,14 @@ class WristoConfiguration extends React.Component{
     };
   };
 
+
+componentWillMount() {          
+  // this.props.getWearerDevice();
+    };
+
+// componentWillUpdate() {          
+//   this.props.getWearerDevice();
+//     };
 
 
 
@@ -40,25 +50,35 @@ const tableActions = <div>
 
 
 
-      const wristoDataTable = this.state.wristoData.map((dataElement) => {
+      const wristoDataTable = this.props.wearerDevice.map((dataElement) => {
        // console.log((dataElement.uniqueWristoId.concat(Math.random())).toString());
+         return (
+            this.props.error ? <WearerError /> : this.props.wearerDevice.length != 0 ? 
+              <tr key={dataElement.id.toString()}>
+                <td>{dataElement.name}</td>
+                <td>{dataElement.phone_number}</td>
+                <td>{dataElement.unique_wristo_id}</td>
+                <td>{dataElement.status}</td>
+                <td>
+                  {tableActions}   
+                </td>
+              </tr>
+            :
 
-      
+            <tr key={dataElement.id.toString()}>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                  {tableActions}   
+                </td>
+              </tr>
+)
+});
 
-          return (
 
-            <tr key={dataElement.uniqueWristoId.toString()}>
-              <td>{dataElement.name}</td>
-              <td>{dataElement.simNumber}</td>
-              <td>{dataElement.uniqueWristoId}</td>
-              <td>{dataElement.status}</td>
-              <td>
-                {tableActions}   
-              </td>
-            </tr>
-          )
-        });
-
+// <WearersLoading/>
 
  
 
@@ -87,7 +107,7 @@ const tableActions = <div>
                 </tr>
               </thead>
               <tbody>
-                  {wristoDataTable} 
+                    {wristoDataTable}  
               </tbody>
           </table>
 

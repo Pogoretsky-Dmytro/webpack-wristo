@@ -54,17 +54,25 @@
     background-color: #f2f2f2;
 }
 
-.wearers__user__logo{
+/*.wearers__user__logo{
     width: 35px;
     height: 35px;
     margin-left: 20px;
     margin-right: 15px;
     border-radius: 35px;
-    /*background-image: url(../../assets/icons/default_avatar.png);*/
     background-size: cover;
     background-repeat: no-repeat;
    
+}*/
+
+.wearers__user__logo{
+    width: 15px;
+    height: 15px;
+    margin-left: 20px;
+    margin-right: 15px;
+    border-radius: 35px;   
 }
+
 
 .user__name{
     display: block;
@@ -108,7 +116,15 @@
 
 }
 
+.wearerList{
+    overflow: auto;
+    max-height: 190px;
 
+}
+
+.wearerList::-webkit-scrollbar { 
+    display: none; 
+}
 
 .addWearerButton{
     width: 100%;

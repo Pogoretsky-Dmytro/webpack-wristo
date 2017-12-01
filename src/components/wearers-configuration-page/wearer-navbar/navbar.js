@@ -12,11 +12,13 @@ class SettingsNavbar extends React.Component{
 
 constructor(props) {
     super(props);
-    // this.HandleWearerData = this.HandleWearerData.bind(this);
     this.HandleSearch = this.HandleSearch.bind(this);
+    // this.handleAddWearer = this.handleAddWearer.bind(this);
     this.state = {
       wearerId: 1,
       isClicked : false,
+      wearersBuffer: [],
+
       // wearersData : [
       // {'id': '1','full_name': 'Joan', 'gender': 'Female', 'age': '78', 'weight': '72', 'heart_rate': '120-150', 'image': 'https://image.flaticon.com/icons/svg/145/145847.svg', 'master_id': '0'},
       // {'id': '2','full_name': 'Kate', 'gender': 'Female', 'age': '68', 'weight': '60', 'heart_rate': '60-120', 'image': 'https://image.flaticon.com/icons/svg/145/145847.svg', 'master_id': '0'},
@@ -34,10 +36,12 @@ constructor(props) {
       this.setState({search: event.target.value.substr(0,20)})
   };
       
-  
+ 
 
  render(){
 
+        //this.state.wearersBuffer = this.props.wearersData;
+       // console.log(wearersBuffer);
 
         let filteredWearers = this.props.wearersData.filter(
               (wearer) => {
@@ -45,7 +49,7 @@ constructor(props) {
               }
           );
 
-        const namesList = filteredWearers.map((wearer) => {
+        let namesList = filteredWearers.map((wearer) => {
 
            let wearerElementStyle = classNames({
               'wearers__user': true,
@@ -57,7 +61,14 @@ constructor(props) {
            // style={divStyle}
 
           return (
-            <li className={wearerElementStyle} key={wearer.id.toString()} onClick={(event) => {this.props.handleWearerData(wearer.id); this.state.wearerId=wearer.id; this.setState({isClicked : true}); console.log(event.target)  }} >
+            <li className={wearerElementStyle} key={wearer.id.toString()} onClick={(event) => 
+
+              {this.props.handleWearerData(wearer.id); 
+              this.setState({wearerId:wearer.id}); 
+              this.props.getWearerDevice(wearer.id); 
+              this.setState({isClicked : true}); 
+              console.log('wearerId in navbar ==> ' + wearer.id)  }} >
+
                 <div className="wearers__user__logo"> <img src={`${wearer.image}`} alt='' /> </div> 
                 <div className="wearers__user__name"> {wearer.full_name} </div>
             </li>
@@ -65,10 +76,7 @@ constructor(props) {
         });
 
         
-
-
-
-        return (
+ return (
             <div>
             <div className="wearers">
                 <div className="tile__header"> Wearers list </div>
@@ -78,14 +86,12 @@ constructor(props) {
                       <path d="M0 0h24v24H0z" fill="none"/>
                     </svg> 
                     <input className="searchWearers" placeholder="Search" type="text" value={this.state.search} onChange={this.HandleSearch}/>
-
-                    
-
                 </div>
-                <ul>{namesList}</ul>
-                
+                <div className="wearerList">
+                    <ul>{namesList}</ul>
+                </div>
             </div>
-                <NavbarButton/>
+                <NavbarButton addWearer={this.props.addWearer} getWearers = {this.props.getWearers}/>
             </div>
         );
     }

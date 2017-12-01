@@ -20,14 +20,43 @@ class SettingsPage extends React.Component{
   constructor(props) {
     super(props);
     this.handleWearerData = this.handleWearerData.bind(this);
+    this.getWearers = this.getWearers.bind(this);
+    this.addWearer = this.addWearer.bind(this);
+    this.getWearerDevice = this.getWearerDevice.bind(this);
+
     this.state = {
       wearerId: null,
       axiosData: [],
-      error: false
+      error: false, 
+      wearerDevice: []
     }
   };
 
-componentWillMount() {          
+
+
+
+addWearer(){
+  axios({
+      method: 'post',
+      url: 'https://wristo-platform-backend-stg.herokuapp.com/api/v1/wearers',
+      headers: {'X-Requested-With': 'XMLHttpRequest', 'accept': 'application/json', 'content-type': 'application/json', 
+      'uid': 'boretskairuna23@gmail.com', 'client': 'aqtmsJ3OTtyESjb9YYRgmQ', 'access-token': 'RIlOD4nWyR905zNCgla-jw'},
+      data: {
+        "wearer": {
+          "full_name": "Test",
+          "gender": "male",
+          "age": 20,
+          "weight": 20,
+          "heart_rate": 220,
+          "image": "string"
+        }
+      }
+    })
+};
+
+
+getWearers(){
+  console.log('getWearers');
   axios({
       method: 'get',
       url: 'https://wristo-platform-backend-stg.herokuapp.com/api/v1/wearers',
@@ -36,8 +65,9 @@ componentWillMount() {
       responseType: 'json'
     }).then(response => {
 
-             console.log('wearerId in axios = ' + response.data[0].id);
+             console.log('wearerId in axios = ' , response.data[0].id);
              this.setState({wearerId: response.data[0].id});
+             this.getWearerDevice(response.data[0].id);
              this.setState({axiosData: response.data});
 
 //ЧОМУ ТУ ВАЖЛИВА ПОСЛІЖОВНІСТЬ ЗАПИСУ СТЕЙТІВ wearerid i axiosdatd ?????
@@ -57,12 +87,46 @@ componentWillMount() {
 
 
 
+
+
+getWearerDevice(wearerId){
+  console.log('wearerId state in main ==>' + wearerId);
+  axios({
+      method: 'get',
+      url: `https://wristo-platform-backend-stg.herokuapp.com/api/v1/wearers/${wearerId}/devices`,
+      headers: {'X-Requested-With': 'XMLHttpRequest', 'accept': 'application/json', 'content-type': 'application/json', 
+      'uid': 'boretskairuna23@gmail.com', 'client': 'aqtmsJ3OTtyESjb9YYRgmQ', 'access-token': 'RIlOD4nWyR905zNCgla-jw'},
+      responseType: 'json'
+    }).then(response => {
+             // console.log('wearerDevice in axios = ' + response.data);
+             this.setState({wearerDevice: response.data});
+}).catch((error) => { 
+        console.log(error);
+        this.setState({error: true})
+        })
+};
+
+
+
+componentWillMount() {          
+  this.getWearers();
+  
+    };
+
+
+
+
+
   handleWearerData(event) {
+    console.log('event', event);debugger;
     this.setState({wearerId: event});
+    this.getWearerDevice(event);
   };
 
     render(){
- // console.log('axiosData outside promise -->' + this.state.axiosData);
+      debugger;
+
+ console.log('wearerId  inside settingpage render -->' + this.state.wearerId);
 
 
    // let  wearersData = this.state.axiosData;
@@ -87,12 +151,12 @@ componentWillMount() {
           {
             this.state.error ? <WearerError /> : this.state.axiosData.length != 0 ? 
             <div className="contentWrap">
-              <SettingsNavbar wearersData = {this.state.axiosData} handleWearerData={this.handleWearerData} />
+              <SettingsNavbar wearersData = {this.state.axiosData} handleWearerData={this.handleWearerData} addWearer={this.addWearer} getWearers = {this.getWearers} getWearerDevice={this.getWearerDevice} wearerId = {this.state.wearerId}/>
               <div className="wearerConfigWrap">
                 <p className="wearerConfigWrap__name">Configuration Page</p>
                 <p className="wearerConfigWrap__description">Manage information about wristo</p>
                 <WearerProfile wearersData = {this.state.axiosData} wearerId = {this.state.wearerId}/>
-                <WristoConfiguration/>
+                <WristoConfiguration getWearerDevice = {this.getWearerDevice} wearerDevice = {this.state.wearerDevice} error = {this.state.error}/>
                 <CarersData/>
               </div>
             </div>

@@ -21,16 +21,21 @@ class WearerProfile extends React.Component{
   };
   
     render(){
-      debugger;
+        // if (!this.props.wearerData || this.props.wearerData.length === 0) {
+        //   return null;
+        // }
+
+        console.log('props.wearers', this.props.wearersData);
 
         let wearersBuffer = this.props.wearersData;
-        console.log(wearersBuffer);
+        // console.log(wearersBuffer);
         let wearerID = this.props.wearerId;
-        let wearerArray = wearersBuffer.filter((element)=>{ 
-        console.log(element);
-        if (element.id===wearerID) {return element}});
+        console.log('wearerID', wearerID)
+        let wearerArray = wearersBuffer.filter(function (element){ 
+        console.log('element',element);
+        if(element.id===wearerID) {return true}});//element
 
-
+        console.log('wearerArray', wearerArray);
       let wearer = wearerArray[0];
 
 
