@@ -21,10 +21,14 @@ class WearerProfile extends React.Component{
   };
   
     render(){
+      debugger;
 
         let wearersBuffer = this.props.wearersData;
+        console.log(wearersBuffer);
+        let wearerID = this.props.wearerId;
         let wearerArray = wearersBuffer.filter((element)=>{ 
-        if (element.id===this.props.wearerId) {return element}});
+        console.log(element);
+        if (element.id===wearerID) {return element}});
 
 
       let wearer = wearerArray[0];

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import routes from './routes.js';
 import Axios from 'axios';
 import classNames from 'classnames';
-
 import App from './app.js';
 import Home from './components/home/home.js';
 import NotFound from './components/notfound/notFound.js';

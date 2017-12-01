@@ -14,9 +14,9 @@ constructor(props) {
     super(props);
     // this.HandleWearerData = this.HandleWearerData.bind(this);
     this.HandleSearch = this.HandleSearch.bind(this);
-    this.HandleBackground = this.HandleBackground.bind(this);
     this.state = {
-      wearerId: '1',
+      wearerId: 1,
+      isClicked : false,
       // wearersData : [
       // {'id': '1','full_name': 'Joan', 'gender': 'Female', 'age': '78', 'weight': '72', 'heart_rate': '120-150', 'image': 'https://image.flaticon.com/icons/svg/145/145847.svg', 'master_id': '0'},
       // {'id': '2','full_name': 'Kate', 'gender': 'Female', 'age': '68', 'weight': '60', 'heart_rate': '60-120', 'image': 'https://image.flaticon.com/icons/svg/145/145847.svg', 'master_id': '0'},
@@ -25,75 +25,19 @@ constructor(props) {
       // ],
       search: ""
     };
-    // this.handleEvent = this.handleEvent.bind(this);
   };
 
 // woman --> https://image.flaticon.com/icons/svg/145/145847.svg
 // man ----> https://image.flaticon.com/icons/svg/145/145842.svg
 
-// handleEvent(event){
-// this.setState({wearerId: event.target.key});
-// };
-
-
-// {'logo': "1", 'name': 'Joan'}, 
-// {'logo': "2", 'name': 'Kate'},
-// {'logo': "3", 'name': 'Mark'},
-// {'logo': "4", 'name': 'Angelina'}
   HandleSearch(event) {
       this.setState({search: event.target.value.substr(0,20)})
   };
-
-  HandleBackground(event) {
-    console.log('background changed !!!!');
-    //event.target.style={backgroundColor: grey}
-  };
       
-  // HandleWearerData(event) {
-  //   this.setState({wearerId: event.target.id})
-  // };
-
-// onClick={ (e) => {
-//     gaClickEvent('home-where-to-buy', 'submit' , undefined);
-//     this.submit(e);
-//   }} >
-// But this is slightly more code that I'd be comfortable putting in an onClick handler. If I were you, I'd separate this logic out into a handler method on the component. Eg:
-
-
-
-
-
-//   handleClick () {
-//     gaClickEvent('home-where-to-buy', 'submit' , undefined);
-//     this.submit();
-//   },
-//   render () {
-//     return <button 
-//       className={s.button}
-//       onClick={(e) => this.handleClick(e)} >
-//       I am a button!
-//       </button>;
-//   }
-
-
-
-// HandleBackground () {
-//     gaClickEvent('home-where-to-buy', 'submit' , undefined);
-//     this.submit();
-//   },
-
-
-// (event)=>{ console.log(event.target); return(event.target.style={liStyle}) }
-
-// if (wearer.id === this.state.wearerId) event.target.style.backgroundColor='grey';
+  
 
  render(){
 
-        // let wearerElementStyle = classNames({
-        //       'selWearer': (this.state.wearerId === wearer.id) 
-        //     }); 
-
-        
 
         let filteredWearers = this.props.wearersData.filter(
               (wearer) => {
@@ -105,11 +49,15 @@ constructor(props) {
 
            let wearerElementStyle = classNames({
               'wearers__user': true,
-              'selWearer': (this.state.wearerId === wearer.id) 
+              'selWearer': this.state.wearerId === wearer.id ,
+              'defWearer': (this.props.wearersData[0].id === wearer.id && !this.state.isClicked) 
             }); 
 
+           //let divStyle={backgroundColor: 'grey'};
+           // style={divStyle}
+
           return (
-            <li className={wearerElementStyle} key={wearer.id.toString()} onClick={(event) => {this.props.handleWearerData(wearer.id); this.state.wearerId=wearer.id; console.log(event.target)  }} >
+            <li className={wearerElementStyle} key={wearer.id.toString()} onClick={(event) => {this.props.handleWearerData(wearer.id); this.state.wearerId=wearer.id; this.setState({isClicked : true}); console.log(event.target)  }} >
                 <div className="wearers__user__logo"> <img src={`${wearer.image}`} alt='' /> </div> 
                 <div className="wearers__user__name"> {wearer.full_name} </div>
             </li>
@@ -147,11 +95,3 @@ constructor(props) {
 
 export default SettingsNavbar;
 
-
-// <button class="addWearerButton">
-//                     <svg class="addWearerButton__icon" fill="#B52F54" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-//                       <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-//                       <path d="M0 0h24v24H0z" fill="none"/>
-//                     </svg>
-//                     <span class="addWearerButton__name">Add Wearer</span>
-//                 </button>

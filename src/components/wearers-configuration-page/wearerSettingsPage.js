@@ -8,6 +8,7 @@ import WristoConfiguration from './wristo-group-configuration/wristoGroupConfigu
 import WearerError from './wearer-error.js';
 import WearersLoading from './wearer-loading.js';
 import WearerProfile from './wearer-profile/wearerProfile.js';
+import CarersData from './carers-data/carersData.js'
 import {
   BrowserRouter as Router,
   Route,
@@ -20,7 +21,7 @@ class SettingsPage extends React.Component{
     super(props);
     this.handleWearerData = this.handleWearerData.bind(this);
     this.state = {
-      wearerId: "1",
+      wearerId: null,
       axiosData: [],
       error: false
     }
@@ -35,7 +36,14 @@ componentWillMount() {
       responseType: 'json'
     }).then(response => {
 
-     this.setState({axiosData: response.data});
+             console.log('wearerId in axios = ' + response.data[0].id);
+             this.setState({wearerId: response.data[0].id});
+             this.setState({axiosData: response.data});
+
+//ЧОМУ ТУ ВАЖЛИВА ПОСЛІЖОВНІСТЬ ЗАПИСУ СТЕЙТІВ wearerid i axiosdatd ?????
+  // яКЩО ВКАЗАТИ СПОЧАТКУ axiosData то wearerId НЕ ЗАПИШЕТЬСЯ !?!?!?!?!?!?!?!?!?!
+
+     
 
  //     console.dir('axiosData inside promise -->' + this.state.axiosData);
 
@@ -75,12 +83,18 @@ componentWillMount() {
     return (
           <div>
           <Header/>
-          <div className="contentWrap">
+          <div >
           {
             this.state.error ? <WearerError /> : this.state.axiosData.length != 0 ? 
-            <div>
-            <SettingsNavbar wearersData = {this.state.axiosData} handleWearerData={this.handleWearerData} />
-            <WearerConfiguration wearersData = {this.state.axiosData}  wearerId = {this.state.wearerId} />
+            <div className="contentWrap">
+              <SettingsNavbar wearersData = {this.state.axiosData} handleWearerData={this.handleWearerData} />
+              <div className="wearerConfigWrap">
+                <p className="wearerConfigWrap__name">Configuration Page</p>
+                <p className="wearerConfigWrap__description">Manage information about wristo</p>
+                <WearerProfile wearersData = {this.state.axiosData} wearerId = {this.state.wearerId}/>
+                <WristoConfiguration/>
+                <CarersData/>
+              </div>
             </div>
             :
             <WearersLoading/>

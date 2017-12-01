@@ -35,7 +35,7 @@ class WearerConfiguration extends React.Component{
         <div className="wearerConfigWrap">
   			  <p className="wearerConfigWrap__name">Configuration Page</p>
           <p className="wearerConfigWrap__description">Manage information about wristo</p>
-          
+          <WearerProfile wearer = {wearer} />
           <WristoConfiguration/>
           <CarersData/>
 		    </div>
