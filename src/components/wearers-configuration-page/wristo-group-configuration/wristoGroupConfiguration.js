@@ -14,16 +14,16 @@ class WristoConfiguration extends React.Component{
     super(props);
     // this.CreateWearersList = this.CreateWearersList.bind(this);
     // this.HandleSearch = this.HandleSearch.bind(this);
-    this.state = {
-      wristoData : [{'name': 'Wristo1', 'simNumber': '+380698632654', 'uniqueWristoId': '4rt567hyt67888huyt900', 'status': 'active'}, 
-                   ]
-    };
+    // this.state = {
+    //   wristoData : [{'name': 'Wristo1', 'simNumber': '+380698632654', 'uniqueWristoId': '4rt567hyt67888huyt900', 'status': 'active'}, 
+    //                ]
+    // };
   };
 
 
-componentWillMount() {          
-  // this.props.getWearerDevice();
-    };
+// componentWillMount() {          
+//   // this.props.getWearerDevice();
+//     };
 
 // componentWillUpdate() {          
 //   this.props.getWearerDevice();
@@ -48,39 +48,125 @@ const tableActions = <div>
           </button>
         </div>;
 
+// this.props.wearerDevice
 
-
-      const wristoDataTable = this.props.wearerDevice.map((dataElement) => {
+         console.log('WristoConfiguration this.props.wearerDevice', this.props.wearerDevice);
+      const wristoDataTable = this.props.wearerDevice.map((wearerDeviceObject) => {
        // console.log((dataElement.uniqueWristoId.concat(Math.random())).toString());
-         return (
-            this.props.error ? <WearerError /> : this.props.wearerDevice.length != 0 ? 
-              <tr key={dataElement.id.toString()}>
-                <td>{dataElement.name}</td>
-                <td>{dataElement.phone_number}</td>
-                <td>{dataElement.unique_wristo_id}</td>
-                <td>{dataElement.status}</td>
-                <td>
-                  {tableActions}   
-                </td>
-              </tr>
-            :
 
-            <tr key={dataElement.id.toString()}>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
+         
+         return ( 
+            this.props.error ? <WearerError /> : 
+            (Object.keys(wearerDeviceObject).length !== 0 ? 
+              <tr key={wearerDeviceObject.id.toString()}>
+                <td>{wearerDeviceObject.name}</td>
+                <td>{wearerDeviceObject.phone_number}</td>
+                <td>{wearerDeviceObject.unique_wristo_id}</td>
+                <td>{wearerDeviceObject.status}</td>
                 <td>
                   {tableActions}   
                 </td>
               </tr>
+            :<tr key={Math.random().toString()}>
+                <td>vvvvv</td>
+                <td>vvvv</td>
+                <td>vvvvv</td>
+                <td>vvvvv</td>
+                <td>
+                  {tableActions}   
+                </td>
+              </tr>)
 )
 });
+
+//       console.log('WristoConfiguration this.props.wearerDevice', this.props.wearerDevice);
+//       const wristoDefaultTable = this.props.wearerDevice.map((wearerDeviceObject) => {
+//        // console.log((dataElement.uniqueWristoId.concat(Math.random())).toString());
+
+//            if (Object.keys(wearerDeviceObject).length == 0){
+//             return <tr key={Math.random().toString()}>
+//                 <td>vvvvv</td>
+//                 <td>vvvv</td>
+//                 <td>vvvvv</td>
+//                 <td>vvvvv</td>
+//                 <td>
+//                   {tableActions}   
+//                 </td>
+//               </tr>
+//            }
+
+// });
+
+
+
+
+//       console.log('WristoConfiguration this.props.wearerDevice', this.props.wearerDevice);
+//       const wristoDataTable = this.props.wearerDevice.map((wearerDeviceObject) => {
+//        // console.log((dataElement.uniqueWristoId.concat(Math.random())).toString());
+
+//           if (this.props.error) {
+//             return <WearerError />
+//           }
+//           else if(Object.keys(wearerDeviceObject).length !== 0) {
+//            return <tr key={wearerDeviceObject.id.toString()}>
+//                 <td>{wearerDeviceObject.name}</td>
+//                 <td>{wearerDeviceObject.phone_number}</td>
+//                 <td>{wearerDeviceObject.unique_wristo_id}</td>
+//                 <td>{wearerDeviceObject.status}</td>
+//                 <td>
+//                   {tableActions}   
+//                 </td>
+//               </tr>
+//           }
+//           else {
+//             return <tr key={Math.random().toString()}>
+//                 <td>vvvvv</td>
+//                 <td>vvvv</td>
+//                 <td>vvvvv</td>
+//                 <td>vvvvv</td>
+//                 <td>
+//                   {tableActions}   
+//                 </td>
+//               </tr>
+//           }
+// });
+
+
+
 
 
 // <WearersLoading/>
 
  
+//         let wearerDeviceData = this.props.wearerDevice[0];
+//        let wearerDeviceTable = (wearerDeviceData) => {
+//        // console.log((dataElement.uniqueWristoId.concat(Math.random())).toString());
+//          console.log('this.props.wearerDevice', this.props.wearerDevice);
+         
+//          return ( 
+//             this.props.error ? <WearerError /> : 
+//             (wearerDeviceData.length != 0 ? 
+//               <tr key={wearerDeviceData.id.toString()}>
+//                 <td>{wearerDeviceData.name}</td>
+//                 <td>{wearerDeviceData.phone_number}</td>
+//                 <td>{wearerDeviceData.unique_wristo_id}</td>
+//                 <td>{wearerDeviceData.status}</td>
+//                 <td>
+//                   {tableActions}   
+//                 </td>
+//               </tr>
+//             :
+//             <tr key={Math.random().toString()}>
+//                 <td>vvvvv</td>
+//                 <td>vvvv</td>
+//                 <td>vvvvv</td>
+//                 <td>vvvvv</td>
+//                 <td>
+//                   {tableActions}   
+//                 </td>
+//               </tr>)
+// )
+// };
 
 
         return (
@@ -107,7 +193,7 @@ const tableActions = <div>
                 </tr>
               </thead>
               <tbody>
-                    {wristoDataTable}  
+                    {wristoDataTable}
               </tbody>
           </table>
 

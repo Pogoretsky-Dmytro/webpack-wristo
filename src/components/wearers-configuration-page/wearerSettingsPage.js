@@ -23,12 +23,14 @@ class SettingsPage extends React.Component{
     this.getWearers = this.getWearers.bind(this);
     this.addWearer = this.addWearer.bind(this);
     this.getWearerDevice = this.getWearerDevice.bind(this);
+    this.getCarers = this.getCarers.bind(this);
 
     this.state = {
       wearerId: null,
       axiosData: [],
       error: false, 
-      wearerDevice: []
+      wearerDevice: [],
+      carer: []
     }
   };
 
@@ -98,19 +100,40 @@ getWearerDevice(wearerId){
       'uid': 'boretskairuna23@gmail.com', 'client': 'aqtmsJ3OTtyESjb9YYRgmQ', 'access-token': 'RIlOD4nWyR905zNCgla-jw'},
       responseType: 'json'
     }).then(response => {
+      debugger;
              // console.log('wearerDevice in axios = ' + response.data);
              this.setState({wearerDevice: response.data});
-}).catch((error) => { 
+             console.log('wearerDevice response.data', response.data);
+             }
+             
+).catch((error) => { 
         console.log(error);
         this.setState({error: true})
         })
 };
 
+getCarers(){
+ console.log('getCarers');
+  axios({
+      method: 'get',
+      url: 'https://wristo-platform-backend-stg.herokuapp.com/api/v1/carers',
+      headers: {'X-Requested-With': 'XMLHttpRequest', 'accept': 'application/json', 'content-type': 'application/json', 
+      'uid': 'boretskairuna23@gmail.com', 'client': 'aqtmsJ3OTtyESjb9YYRgmQ', 'access-token': 'RIlOD4nWyR905zNCgla-jw'},
+      responseType: 'json'
+    }).then(response => {
+             console.log('getCarers response data', response.data);
+             this.setState({carers: response.data});
+
+}).catch((error) => { 
+        console.log(error);
+        this.setState({error: true})
+        });
+    };
 
 
 componentWillMount() {          
   this.getWearers();
-  
+  this.getCarers();
     };
 
 
@@ -118,18 +141,17 @@ componentWillMount() {
 
 
   handleWearerData(event) {
-    console.log('event', event);debugger;
+    console.log('event', event);
     this.setState({wearerId: event});
     this.getWearerDevice(event);
   };
 
     render(){
-      debugger;
+
 
  console.log('wearerId  inside settingpage render -->' + this.state.wearerId);
 
 
-   // let  wearersData = this.state.axiosData;
    // let  wearersData = [
    //    {'id': '1','full_name': 'Joan', 'gender': 'Female', 'age': '78', 'weight': '72', 'heart_rate': '120-150', 'image': 'https://image.flaticon.com/icons/svg/145/145847.svg', 'master_id': '0'},
    //    {'id': '2','full_name': 'Kate', 'gender': 'Female', 'age': '68', 'weight': '60', 'heart_rate': '60-120', 'image': 'https://image.flaticon.com/icons/svg/145/145847.svg', 'master_id': '0'},
@@ -156,8 +178,8 @@ componentWillMount() {
                 <p className="wearerConfigWrap__name">Configuration Page</p>
                 <p className="wearerConfigWrap__description">Manage information about wristo</p>
                 <WearerProfile wearersData = {this.state.axiosData} wearerId = {this.state.wearerId}/>
-                <WristoConfiguration getWearerDevice = {this.getWearerDevice} wearerDevice = {this.state.wearerDevice} error = {this.state.error}/>
-                <CarersData/>
+                <WristoConfiguration getWearerDevice = {this.getWearerDevice} wearerDevice = {this.state.wearerDevice} error = {this.state.error} />
+                <CarersData carers = {this.state.carers} error = {this.state.error/>
               </div>
             </div>
             :

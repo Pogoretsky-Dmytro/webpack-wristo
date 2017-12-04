@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import WearerError from '../wearer-error.js';
+import WearersLoading from '../wearer-loading.js';
 import {
   BrowserRouter as Router,
   Route,
@@ -41,28 +43,40 @@ const tableActions = <div>
         </div>;
 
 
-
-      const CarersDataTable = this.state.CarersData.map((dataElement) => {
-       // console.log((dataElement.uniqueWristoId.concat(Math.random())).toString());
+      console.log('this.props.carers', this.props.carers);
+      const CarersDataTable = this.props.carers.map((dataElement) => {
+       console.log('carers dataElement', dataElement);
 
       
 
           return (
 
-            <tr key={dataElement.simNumber.toString()}>
-              <td>{dataElement.fullName}</td>
-              <td>{dataElement.simNumber}</td>
+          this.props.error ? <WearerError /> : 
+            ((Object.keys(dataElement).length !== 0 ? 
+               <tr key={dataElement.id.toString()}>
+              <td>{dataElement.id}</td>
+              <td>{dataElement.master_id}</td>
               <td>{dataElement.email}</td>
               <td>{dataElement.permition}</td>
               <td>
                 {tableActions}   
               </td>
             </tr>
-          )
+            :
+            <tr key={Math.random().toString()}>
+              <td>---</td>
+              <td>---</td>
+              <td>---</td>
+              <td>---</td>
+              <td>
+                {tableActions}   
+              </td>
+            </tr>)
+
+          ))
         });
 
-
- 
+        
 
 
         return (
